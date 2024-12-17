@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenhouse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="..." crossorigin="anonymous">
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        /* Inline CSS to prevent white flash */
+        #fade-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            opacity: 1; /* Start fully opaque */
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fullscreen Fade Overlay -->
+    <div id="fade-overlay" class="fade-overlay"></div>
+
+    <div class="title"><span>GREENHOUSE</span></div>
+    <div class="phone-container">
+        <div class="phone">
+            <img src="images/5cb0633d80f2cf201a4c3253.png" alt="Phone">
+        </div>
+        
+            <!-- container to hold multiple chat screens -->
+            <div class="chats-container">
+                <!-- FIRST CHAT SCREEN -->
+                <div class="chat-wrapper">
+                    <div class="chat-screen" id="screen1">
+                        <div class="chat-header">
+                            <div class="header-components">
+                                <i class="fa-solid fa-chevron-left"></i>
+                                <div class="contact">
+                                    <div class="contact-photo" id="jim">
+                                        <div class="initials"><span>JD</span></div>
+                                    </div>
+                                    <span class="contact-name">Jim Dough</span>
+                                </div>
+                                <i class="fa-solid fa-video"></i>
+                            </div>                        
+                        </div>
+                        <div class="messages">
+                            <div class="date"><p><span>iMessage<br>Sat, Aug 18</span> at 11:36pm</p></div>
+                            <div class="message sent">Yoo Jim, I hope you had a relaxing first night at the house</div>
+                            <div class="message sent">I was thinking I'd make dinner for the house tonight (im an excellent chef)</div>
+                            <div class="message sent">I'm going to pick up a couple steaks, is there anything else you like to eat?</div>
+                            <div class="message received">I don't eat steak</div>
+                            <div class="message sent">oh shit.. my bad, should I grab some fish or something or are you a vegetarian?</div>
+                            <div class="message received">I'm allergic</div>
+                            <div class="message sent">to fish?</div>
+                            <div class="message received">to meat</div>
+                            <div class="message sent">like all meat?</div>
+                            <div class="message received">yes</div>
+                            <div class="message sent">dang, that's crazy</div>
+                            <div class="message sent">what else can I grab for you then?</div>
+                            <div class="message received">tomato. water. banana leaf. asparagus.</div>
+                            <div class="message received">I will be in the basement from 2pm to 4pm to set up my studio</div>
+                            <div class="message received">Please no disturbance</div>
+                            <div class="message sent">rightt</div>
+                            <div class="message sent">uh I'll do my best to find everything</div>
+                            <div class="message sent">I won't be home for a while anyways so no worries about the basement</div>
+                            <div class="message sent">what kind of studio are you setting up? the basement is pretty dark</div>
+                            <div class="message sent">and old..</div>
+                            <div class="message sent">but I guess it's cool</div>
+                            <div class="message received">I take photographs</div>
+                            <div class="message received">of people</div>
+                            <div class="message received">what do you mean? the basement is perfect.</div>
+                            <div class="message sent">Hey man, whatever floats your boat.. it's sick that you can take pictures though</div>
+                            <div class="message sent">You should show me some of your work</div>
+                            <div class="message received">why?</div>
+                            <div class="message sent">I just thought it would be cool but no worries if its private</div>
+                            <div class="message received">ok</div>
+                            <div class="message sent">alrighty.. well I'm going to start <a href="#" data-target="screen2">shopping</a> and I'll be back in a bit</div>
+                        </div>
+                        <div class="message-input-container">
+                            <i class="fa-solid fa-plus plus-button"></i>
+                            <input type="text" class="message-input" placeholder="iMessage">
+                            <i class="fa-solid fa-microphone microphone-button"></i>
+                        </div>
+                        <div class="home-bar"></div>                        
+                    </div>
+                </div>
+
+                <!-- SECOND CHAT SCREEN -->
+                <div class="chat-wrapper">
+                    <div class="chat-screen" id="screen2">
+                        <div class="chat-header">
+                            <div class="header-components">
+                                <i class="fa-solid fa-chevron-left"></i>
+                                <div class="contact">
+                                    <div class="contact-photo" id="jim">
+                                        <div class="initials"><span>JD</span></div>
+                                    </div>
+                                    <span class="contact-name">Jim Dough</span>
+                                </div>
+                                <i class="fa-solid fa-video"></i>
+                            </div>                        
+                        </div>
+                        <div class="messages">
+                            <div class="date"><p><span>iMessage<br>Sat, Aug 17</span> at 3:15</p></div>
+                            <div class="message sent">Hey Jim, just wanted to check in</div>
+                            <div class="message sent">are you still supposed to be getting in at 6?</div>
+                            <div class="message received">5:45</div>
+                            <div class="message received">its been fun but I'm ready to get back to Pitt.. gotta get ready for the semester</div>
+                            <div class="message received">ok cool, I have your key so just knock when you get here</div>
+                            <div class="message sent">why?</div>
+                            <!-- Add a data-target attribute to trigger slide to screen2 -->
+                            <div class="message sent">I mean I have your key so you wouldn't be able to get in</div>
+                            <div class="message sent">and it's raining soo</div>
+                            <div class="message received">I will knock</div>
+                            <div class="message sent">Sweet, I'll see you in a few</div>
+                            <div class="message received">A few what?</div>
+                            <div class="message sent">I'll see you in a few hours*</div>
+                            <div class="message received"><a href="#" data-target="screen3">supreme!</a></div>
+                        </div>
+                        <div class="message-input-container">
+                            <i class="fa-solid fa-plus plus-button"></i>
+                            <input type="text" class="message-input" placeholder="iMessage">
+                            <i class="fa-solid fa-microphone microphone-button"></i>
+                        </div>
+                        <div class="home-bar"></div>                        
+                    </div>
+                </div>
+
+                <!-- THIRD CHAT SCREEN -->
+                <div class="chat-wrapper">
+                    <div class="chat-screen" id="screen3">
+                        <div class="chat-header">
+                            <div class="header-components">
+                                <i class="fa-solid fa-chevron-left"></i>
+                                <div class="contact">
+                                    <div class="contact-photo" id="mark">
+                                        <div class="initials"><span>MH</span></div>
+                                    </div>
+                                    <span class="contact-name">Mark Hines</span>
+                                </div>
+                                <i class="fa-solid fa-video"></i>
+                            </div>                        
+                        </div>
+                        <div class="messages">
+                            <div class="date"><p><span>iMessage<br>Sat, Aug 17</span> at 6:11pm</p></div>
+                            <div class="message received">How'd it go? did he get moved in?</div>
+                            <div class="message sent">yo</div>
+                            <div class="message sent-vid"><div class="play">
+                                <i class="fa-solid fa-play"></i></div>
+                                <video src="images/arrival.mov" width="150px"></video>
+                            </div>
+                            <div class="message sent">yeah he made it</div>
+                            <div class="message sent">I was going to talk to him a little bit but he went straight to his room</div>
+                            <div class="message received">did you help him move in?</div>
+                            <div class="message sent">I offered but he said he was good</div>
+                            <div class="message sent">he literally only brought a single suitcase though</div>
+                            <div class="message sent">no bed, no desk.. so i'm not sure <br> 
+                                what his plan is but I'll give him some time to relax and then I'll check in</div>
+                            <div class="message received">alright cool, I'm about to head to dinner but keep me updated</div>
+                            <div class="message sent">will do</div>
+                            <div class="date"><p><span>iMessage<br>Sat, Aug 17</span> at 6:58pm</p></div>
+                            <div class="message sent">bro..</div>
+                            <div class="message sent">how's this even possible??</div>
+                            <div class="message sent-vid"><div class="play">
+                                <i class="fa-solid fa-play"></i></div>
+                                <video src="images/plants.MOV" width="150px"></video>
+                            </div>
+                            <div class="message received">what about it? is that his room?</div>
+                            <div class="message received">I mean it's a lot of plants but</div>
+                            <div class="message sent">dude no</div>
+                            <div class="message sent">look at the time</div>
+                            <div class="message received">??</div>
+                            <div class="message sent">bro, jim got here like an hour ago</div>
+                            <div class="message sent">and his room is completely furnished</div>
+                            <div class="message sent">I've been here this whole time and I didn't hear a thing</div>
+                            <div class="message sent">not to mention he lives above me, and I live right next to the front door</div>
+                            <div class="message sent">I would've heard SOMETHING</div>
+                            <div class="message received">uh yeah I guess that's pretty crazy man, he probably had some friends over and you just didn't notice</div>
+                            <div class="message sent">yeah I guess you're right, still insane tho</div>
+                            <div class="message sent">I'll see if he wants to hang &nbsp;<a href="day2.html" data-target="fadeOut">tomorrow</a></div>
+                            <!-- Add a data-target attribute to trigger slide to screen2 -->
+                        </div>
+                        <div class="message-input-container">
+                            <i class="fa-solid fa-plus plus-button"></i>
+                            <input type="text" class="message-input" placeholder="iMessage">
+                            <i class="fa-solid fa-microphone microphone-button"></i>
+                        </div>
+                        <div class="home-bar"></div>                        
+                    </div>
+                </div>
+            </div> <!-- End of .chats-container -->
+        </div>
+    </div>
+    <script src="App.js"></script>
+    
+    <!-- Full-Screen Media Modal -->
+    <div id="media-modal" class="media-modal">
+        <span id="close-modal" class="close-button">&times;</span>
+        <div class="media-content">
+            <img id="modal-image" src="" alt="Expanded Image">
+        </div>
+    </div>
+
+
+</body>
+</html>

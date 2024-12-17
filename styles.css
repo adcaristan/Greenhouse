@@ -1,0 +1,435 @@
+/* Reset and Layout */
+/* Add a blurred background image */
+/* Blurred Background */
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Required for the pseudo-element to align */
+    overflow: hidden; /* Prevent scrollbars from showing extra space */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: black;
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+    height: 30px;
+    color: greenyellow;
+    position: absolute;
+    top: 0;
+}
+
+/* Add blurred background using ::before */
+/* Blurred Background with Oversize */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110%; /* Increase width */
+    height: 110%; /* Increase height */
+    background: url('images/nada-tunnel-entrance.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(10px);
+    background-color: black;
+    z-index: -1;
+}
+
+/* Phone Container */
+.phone-container {
+    position: relative;
+    width: 600px; /* Adjust phone width for scaling */
+    height: auto; /* Maintain aspect ratio of the phone */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+    box-sizing: border-box;
+    /* clip-path: inset(0% 14% 00% 14%); */
+}
+
+/* Phone Image */
+.phone img {
+    position: relative;
+    display: block;
+    width: 100%; /* Scale phone to container width */
+    height: auto;
+    z-index: 2; /* Place phone above chat screen */
+    pointer-events: none;
+    object-fit: cover;
+    
+}
+
+/* Chat Screen */
+.chats-container {
+    display: flex;
+    width: 300%; /* Adjust based on the number of screens */
+    height: 94%;
+    position: absolute;
+    top: 20px;
+    left: 18.3%;
+    border-radius: 50px;
+    overflow: hidden;
+    transform: translateX(0%); /* Chat screens slide */
+    filter: blur(0px); /* Initial blur state */
+    clip-path: inset(0% 78% 0% 0%); /* Initial clip-path */
+    transition: 
+        transform 0.5s ease-in-out,
+        filter 0.3s ease-out,
+        clip-path 0.5s ease-in-out; /* Smooth clip-path transition */
+}
+
+
+.chat-screen {
+    width: 386px; /* Each screen takes the full width of the container */
+    height: 100%; /* Ensure full height */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Enable vertical scrolling for each screen */
+    border-radius: 30px;
+    background: black;
+}
+
+
+
+.chat-wrapper {
+    display: block;
+}
+
+/* Chat Header */
+.chat-header {
+    height: 110px; /* Set height for the header */
+    padding: 0 20px; /* Add padding for spacing */
+    background: #1e1e1e; /* Dark gray for the header background */
+    color: white;
+    display: flex;
+    align-items: center; /* Vertically center all items */
+    justify-content: space-between; /* Space between left, center, and right elements */
+    font-size: 16px; /* Font size for the header */
+    left: 25px;
+    cursor: default;
+}
+
+.header-components {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between;
+    width: 100%; /* Ensure equal distribution across the header */
+    position: relative;
+    /* margin-left: 25px; */
+}
+
+.contact {
+    display: flex;
+    flex-direction: column; /* Stack photo and name */
+    align-items: center; /* Center-align photo and name horizontally */
+    justify-content: center; /* Center-align vertically */
+    gap: 5px; /* Space between photo and name */
+    flex: 1; /* Allow the contact section to occupy remaining space */
+    text-align: center;
+    transform: translateX(10px) translateY(20px);
+}
+
+.contact-photo {
+    width: 35px; /* Photo circle size */
+    height: 35px;
+    background-color: grey; /* Default background for photo */
+    color: white;
+    border-radius: 50%; /* Makes the container a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center initials in the circle */
+    font-size: 16px; /* Font size for initials */
+    overflow: hidden; /* Ensures photo fits within the circle */
+    cursor: none;
+}
+
+#mark {
+    background-color: purple;
+}
+
+.contact-name {
+    font-size: 8px; /* Adjust font size for the name */
+    color: white;
+    margin: 0; /* Remove default margins */
+    padding-top: 5px;
+    letter-spacing: 1px;
+    cursor: default;
+}
+
+/* Left and right icons (back and video) */
+.header-components i {
+    color: #5baaff; /* Icon color */
+    font-size: 20px; /* Adjust icon size */
+    cursor: pointer; /* Pointer on hover */
+}
+
+
+.contact-photo .initials {
+    position: absolute;
+    font-size: 17px;
+    padding-right: 1px;
+    cursor: default;
+}
+
+/* Header Icons */
+.back-button {
+    cursor: pointer;
+}
+.video-icon {
+    cursor: default;
+}
+
+/* Messages */
+.messages {
+    max-height: calc(100% - 60px); /* Adjust to fit within the visible screen area */
+    overflow-y: scroll;
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between messages */
+    height: calc(100% - 150px); /* Adjust to match .chat-screen's height minus header height */
+}  
+
+.messages .date{
+    font-size: 8px;
+    color: grey;
+    text-align: center;
+    padding-left: 14px;
+    line-height: 1.5;
+}
+
+.messages .date span {
+    font-weight: bold;
+}
+/* Message Bubble Styling */
+.message {
+    max-width: 75%;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 14px; /* Slightly larger font */
+    line-height: 1.4;
+    word-wrap: break-word;
+    pointer-events: auto; /* Allows interaction with children */
+}
+
+/* .message-sent .play {
+    position: absolute;
+    font-size: 2rem;
+    left: 50px;
+    top: 50%;
+    z-index: 10;
+} */
+
+.message img, .message video{
+    width: 150px;
+    max-width: 150px; /* Adjust this to the desired width */
+    max-height: 300px; /* Adjust this to the desired height */
+    border-radius: 15px; /* Optional: Add rounded corners for consistency */
+    object-fit: cover; /* Ensures the image fits without distortion */
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+}
+
+.message img, .message video:hover {
+    transform: scale(1.05);
+}
+
+
+/* Ensure the hyperlink is visible and interactive */
+.message a {
+    color: yellowgreen; /* Matches iPhone link color */
+    /* font-weight: 600; */
+    text-decoration: underline; /* Adds an underline for visibility */
+    pointer-events: auto; /* Enables clicking */
+    cursor: pointer; /* Shows pointer when hovering */
+}
+
+
+/* Received Messages */
+.message.received {
+    background-color: #333333; /* Dark gray bubble */
+    color: white;
+    align-self: flex-start;
+}
+
+/* Sent Messages */
+.message.sent-vid {
+    background-color: black; /* Blue bubble */
+    color: white;
+    align-self: flex-end;
+    position: relative;
+}
+
+.message.sent-vid .play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Center the icon */
+    z-index: 10; /* Ensure the play icon is above the video */
+    pointer-events: none; /* Prevent the icon from blocking the video */
+}
+
+.message.sent-vid .play i {
+    color: white;
+    font-size: 30px;
+    transition: transform .2s ease-in-out;
+    pointer-events: auto;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.message.sent-vid .play i:hover {
+    transform: scale(1.2);
+}
+
+.message.sent {
+    background-color: #007aff; /* Blue bubble */
+    color: white;
+    align-self: flex-end;
+    position: relative;
+    display: flex;
+}
+
+/* Scrollbar Styling */
+.messages::-webkit-scrollbar {
+    width: 5px;
+}
+.messages::-webkit-scrollbar-thumb {
+    background: #666666;
+    border-radius: 10px;
+}
+
+/* Message Input Section */
+.message-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: #1e1e1e; /* Dark background */
+    border-top: 1px solid #333; /* Slight border at the top */
+    height: 90px;
+    box-sizing: border-box;
+    padding-bottom: 50px;
+}
+
+.message-input {
+    flex: 1; /* Grow to fill available space */
+    margin: 0 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px; /* Rounded edges for input field */
+    background-color: #333333; /* Slightly lighter background */
+    color: white;
+    font-size: 14px;
+    outline: none; /* Remove input outline */
+}
+
+.plus-button {
+    color: #aaa; /* Icon color */
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #333;
+    width: 20px;
+    height: 20px;
+    padding-left: 3px;
+    padding-top: 3px;
+    border-radius: 50%;
+}
+.microphone-button {
+    color: #5baaff; /* Icon color */
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Apple-style Home Bar */
+.home-bar {
+    position: absolute;
+    left: 11%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    width: 130px; /* Width of the home bar */
+    height: 5px;
+    background-color: #aaa; /* Light gray */
+    border-radius: 10px; /* Rounded rectangle */
+}
+
+/* Full-Screen Modal Overlay */
+.media-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background: rgba(0, 0, 0, 0.7); */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.media-content img {
+    max-width: 80vw;
+    max-height: 80vh;
+    opacity: 0; /* Start fully transparent */
+    transform: scale(0.9); /* Start with a smaller scale */
+    transition: none; /* We will animate dynamically in JS */
+}
+.media-content video {
+    max-width: 80vw;
+    max-height: 80vh;
+    opacity: 0; /* Start fully transparent */
+    transform: scale(0.9); /* Start with a smaller scale */
+    transition: none; /* We will animate dynamically in JS */
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Centered Media Content */
+.media-content img, .media-content video {
+    max-width: 50vw;
+    max-height: 50vh;
+    opacity: 0; /* Start fully transparent */
+    transform: scale(0.9); /* Start with a smaller scale */
+    transition: none; /* Controlled via JavaScript */
+    border-radius: 25px;
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+/* Fullscreen Fade Overlay */
+.fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black; /* Fades to black */
+    opacity: 0; /* Start fully transparent */
+    pointer-events: none; /* Ensure it doesn't block interaction when transparent */
+    z-index: 9999; /* Place it on top of everything */
+    transition: opacity 1s ease-in-out; /* Smooth fade transition */
+}
+
+/* Active State for Fade-Out */
+.fade-overlay.active {
+    opacity: 1; /* Fully opaque (black screen) */
+}
